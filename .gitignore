@@ -1,2 +1,13 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+
+# Chroma vector index
 chroma_index/
-chroma_index/
+
+# Node front-end
+node_modules/
+
+# macOS clutter
+.DS_Store
