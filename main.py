@@ -18,7 +18,19 @@ collection = client.get_collection("dbqs", embedding_function=embedder)
 # === OpenAI client (we’ll reuse the same instance) ===
 oai = OpenAI()
 
+from fastapi.middleware.cors import CORSMiddleware   # 💜 NEW LINE
+
 app = FastAPI()
+
+# 💜 NEW BLOCK — let the browser do its OPTIONS check
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # front-end dev server
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 class Query(BaseModel):
     user: str
